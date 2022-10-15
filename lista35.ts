@@ -1,23 +1,59 @@
 // BORA
+// EXERCICIO 2
+// console.log(TransformarPalavra("coDIGo"))
 
-console.log(TransformarPalavra("coDIGo"))
+// function TransformarPalavra(palavra: string):string {
+//     let maiusculas : RegExp = /[A-Z]/g
+//     let minusculas : RegExp = /[a-z]/g
 
+//     let contadorMa: string[] | null = palavra.match(maiusculas)
+//     let contadorMi: string[] | null = palavra.match(minusculas)
 
-function TransformarPalavra(palavra: string):string {
-    let maiusculas : RegExp = /[A-Z]/g
-    let minusculas : RegExp = /[a-z]/g
+//     console.log(contadorMa)
+//     console.log(contadorMi)
 
-    let contadorMa: string[] | null = palavra.match(maiusculas)
-    let contadorMi: string[] | null = palavra.match(minusculas)
+//     if(contadorMa.length > contadorMi.length){
+//         return palavra.toUpperCase()
+//     }
+//     else{
+//         return palavra.toLowerCase()
+//     }
+// }
 
-    console.log(contadorMa)
-    console.log(contadorMi)
+//EXERCICIO 3
 
-    if(contadorMa.length > contadorMi.length){
-        return palavra.toUpperCase()
+class Lutador{
+    Nome: string
+    Vida: number
+    Ataque: number
+
+    constructor(nome: string, vida: number, ataque: number){
+        this.Nome = nome
+        this.Vida = vida
+        this.Ataque = ataque
     }
-    else{
-        return palavra.toLowerCase()
+}
+
+let primeiroLutador: Lutador = new Lutador("Marcos", 500, 100)
+let segundoLutador: Lutador = new Lutador("João", 500, 80)
+
+console.log(NomeDoVencedor(primeiroLutador, segundoLutador, segundoLutador))
+
+function NomeDoVencedor(primeiroLutador:Lutador, segundoLutador:Lutador, primeiroAtaque:Lutador): string | undefined{
+    let continuar : boolean = true 
+
+    do{    
+    primeiroLutador.Vida = primeiroLutador.Vida - primeiroAtaque.Ataque
+    console.log(primeiroLutador.Vida)
+    if(primeiroLutador.Vida <= 0){       
+        return segundoLutador.Nome
     }
 
+    segundoLutador.Vida = segundoLutador.Vida - primeiroLutador.Ataque
+    console.log(segundoLutador.Vida)
+    if(segundoLutador.Vida <= 0){       
+        return primeiroLutador.Nome
+    }
+
+    }while(continuar)
 }
