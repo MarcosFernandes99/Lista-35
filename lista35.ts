@@ -1,4 +1,19 @@
 // BORA
+
+// EXERCICIO 1
+
+console.log(QuebrarBarra(5, 3))
+
+function QuebrarBarra(x: number, y: number): number{
+    if(x == 0 || y == 0){
+        return -1
+    }
+
+    let resultado: number = (x * y) - 1
+    return resultado
+
+}
+
 // EXERCICIO 2
 // console.log(TransformarPalavra("coDIGo"))
 
