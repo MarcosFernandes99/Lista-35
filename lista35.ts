@@ -2,17 +2,17 @@
 
 // EXERCICIO 1
 
-console.log(QuebrarBarra(5, 3))
+// console.log(QuebrarBarra(5, 3))
 
-function QuebrarBarra(x: number, y: number): number{
-    if(x == 0 || y == 0){
-        return -1
-    }
+// function QuebrarBarra(x: number, y: number): number{
+//     if(x == 0 || y == 0){
+//         return -1
+//     }
 
-    let resultado: number = (x * y) - 1
-    return resultado
+//     let resultado: number = (x * y) - 1
+//     return resultado
 
-}
+// }
 
 // EXERCICIO 2
 // console.log(TransformarPalavra("coDIGo"))
@@ -50,25 +50,31 @@ class Lutador{
 }
 
 let primeiroLutador: Lutador = new Lutador("Marcos", 500, 100)
-let segundoLutador: Lutador = new Lutador("João", 500, 80)
+let segundoLutador: Lutador = new Lutador("Joao", 500, 80)
 
-console.log(NomeDoVencedor(primeiroLutador, segundoLutador, segundoLutador))
+NomeDoVencedor(primeiroLutador, segundoLutador, "Joao")
 
-function NomeDoVencedor(primeiroLutador:Lutador, segundoLutador:Lutador, primeiroAtaque:Lutador): string | undefined{
-    let continuar : boolean = true 
+function NomeDoVencedor(primeiroLutador:Lutador, segundoLutador:Lutador, primeiroAtacar: string): string | undefined{
+    let continuar : boolean = true
+    let lutadores: Lutador[] = []
+
+    if(primeiroLutador.Nome == primeiroAtacar){
+        lutadores.push(primeiroLutador, segundoLutador)
+    }
+    else{
+        lutadores.push(segundoLutador, primeiroLutador)
+    }      
 
     do{    
-    primeiroLutador.Vida = primeiroLutador.Vida - primeiroAtaque.Ataque
-    console.log(primeiroLutador.Vida)
-    if(primeiroLutador.Vida <= 0){       
-        return segundoLutador.Nome
-    }
-
-    segundoLutador.Vida = segundoLutador.Vida - primeiroLutador.Ataque
-    console.log(segundoLutador.Vida)
-    if(segundoLutador.Vida <= 0){       
-        return primeiroLutador.Nome
-    }
+        lutadores[1].Vida = lutadores[1].Vida - lutadores[0].Ataque
+        if(lutadores[1].Vida <= 0){
+            continuar = false
+            console.log(`O lutador ${lutadores[1].Nome} ficou com ${lutadores[1].Vida} de vida`)
+            console.log("O vencedor da luta e: ", lutadores[0].Nome)
+        }
+        else{
+            lutadores.reverse()
+        }
 
     }while(continuar)
 }
